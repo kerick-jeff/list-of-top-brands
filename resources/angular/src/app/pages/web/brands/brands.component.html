@@ -1,0 +1,32 @@
+<div class="bg-gradient-to-b from-blue-900 to-blue-800 text-white py-16">
+  <div class="container-custom">
+    <div class="max-w-2xl mx-auto text-center">
+      <h1 class="text-4xl font-bold tracking-tight mb-4 sm:text-5xl">Discover Top Brands</h1>
+      <p class="text-lg text-blue-100 mb-8">Explore popular brands {{ userCountry ? 'in ' + countryName : 'around the world' }}</p>
+
+      <div class="bg-white/10 backdrop-blur-sm rounded-lg p-4 inline-block">
+        <div class="text-sm">
+          <span *ngIf="userCountry" class="mr-2">Showing brands for: <span class="font-semibold">{{ countryName }}</span></span>
+          <span *ngIf="!userCountry" class="mr-2">Showing all brands</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-custom py-12">
+  <div *ngIf="loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 animate-pulse">
+    <div *ngFor="let i of [1, 2, 3, 4, 5, 6]" class="bg-white rounded-lg shadow-sm h-64"></div>
+  </div>
+
+  <div *ngIf="!loading && brands.length === 0 && errorMessage" class="text-center py-12">
+    <h3 class="text-xl font-medium text-gray-900 mb-2">{{ errorMessage }}</h3>
+    <p class="text-gray-500">Please check back later.</p>
+  </div>
+
+  <div *ngIf="!loading" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div *ngFor="let brand of brands" class="animate-fade-in">
+      <component-card [brand]="brand"></component-card>
+    </div>
+  </div>
+</div>

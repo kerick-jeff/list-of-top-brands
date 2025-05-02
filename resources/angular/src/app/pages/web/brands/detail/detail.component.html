@@ -1,0 +1,86 @@
+<div class="container-custom py-8">
+  <div *ngIf="loading" class="animate-pulse">
+    <div class="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
+    <div class="h-4 bg-gray-200 rounded w-1/4 mb-8"></div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="h-64 bg-gray-200 rounded"></div>
+      <div class="md:col-span-2">
+        <div class="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
+        <div class="h-4 bg-gray-200 rounded w-full mb-3"></div>
+        <div class="h-4 bg-gray-200 rounded w-full mb-3"></div>
+        <div class="h-4 bg-gray-200 rounded w-2/3 mb-6"></div>
+        <div class="h-10 bg-gray-200 rounded w-1/3"></div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading && !brand && errorMessage" class="text-center py-12">
+    <h3 class="text-xl font-medium text-gray-900 mb-2">Brand Not Found</h3>
+    <p class="text-gray-500 mb-6">The brand you're looking for doesn't exist or has been removed.</p>
+    <a routerLink="/brands" class="btn btn-primary">Back to Brands</a>
+  </div>
+
+  <div *ngIf="!loading && brand" class="animate-fade-in">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between mb-6">
+      <div>
+        <a routerLink="/brands" class="text-sm text-blue-600 hover:text-blue-800">← Back to All Brands</a>
+        <h1 class="text-3xl font-bold text-gray-900 mt-2">{{ brand.name }}</h1>
+      </div>
+      <div class="mt-4 sm:mt-0">
+        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-gray-100 text-gray-800">{{ countryName }}</span>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-xl shadow-sm overflow-hidden">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 p-6">
+        <div class="flex justify-center">
+          <component-image [brandName]="brand.name" [size]="'auto'"></component-image>
+        </div>
+
+        <div class="md:col-span-2">
+          <div class="mb-6">
+            <div class="flex items-center justify-between mb-2">
+              <div class="flex items-center">
+                <component-rating [rating]="brand.rating" [showValue]="true"></component-rating>
+              </div>
+              <div *ngIf="brand.default" class="bg-orange-100 text-orange-800 text-xs px-2 py-1 rounded-full">Featured Brand</div>
+            </div>
+
+            <blockquote class="italic text-gray-700 border-l-4 border-blue-200 pl-4 py-2 text-lg mb-4">"{{ brand.caption }}"</blockquote>
+
+            <p class="text-gray-600 mb-6">{{ brand.description }}</p>
+
+            <a [href]="brand.website" target="_blank" rel="noopener noreferrer" class="btn btn-primary inline-flex items-center">
+              Visit Website
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </a>
+          </div>
+
+          <hr class="my-6">
+
+          <div>
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Additional Information</h3>
+            <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6">
+              <div>
+                <dt class="text-sm text-gray-500">Country</dt>
+                <dd class="mt-1 text-gray-900">{{ countryName }}</dd>
+              </div>
+              <div>
+                <dt class="text-sm text-gray-500">Website</dt>
+                <dd class="mt-1 text-blue-600 truncate">
+                  <a [href]="brand.website" target="_blank" rel="noopener noreferrer">{{ brand.website }}</a>
+                </dd>
+              </div>
+              <div>
+                <dt class="text-sm text-gray-500">Rating</dt>
+                <dd class="mt-1 text-gray-900">{{ brand.rating }}/5</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

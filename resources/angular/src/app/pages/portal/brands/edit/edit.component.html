@@ -1,0 +1,166 @@
+<component-layout-portal-navigator title="Edit Brand" subtitle="Edit brand details">
+  <button (click)="onDelete()" class="btn btn-danger cursor-pointer">Delete Brand</button>
+  <a routerLink="/portal/brands" class="btn btn-secondary">Cancel</a>
+</component-layout-portal-navigator>
+
+<div class="container-custom py-6">
+  <div class="max-w-3xl mx-auto">
+    <div class="bg-white shadow-sm rounded-lg overflow-hidden">
+      <div class="p-6">
+        <div *ngIf="loading" class="animate-pulse">
+          <div class="h-8 bg-gray-200 rounded w-1/3 mb-6"></div>
+          <div class="h-6 bg-gray-200 rounded w-full mb-4"></div>
+          <div class="h-6 bg-gray-200 rounded w-full mb-4"></div>
+          <div class="h-6 bg-gray-200 rounded w-full mb-4"></div>
+          <div class="h-6 bg-gray-200 rounded w-full mb-4"></div>
+          <div class="h-6 bg-gray-200 rounded w-full mb-4"></div>
+        </div>
+
+        <form *ngIf="!loading" [formGroup]="brandForm" (ngSubmit)="onSubmit()">
+          <div class="grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+            <div class="sm:col-span-6">
+              <div class="flex items-center mb-6">
+                <div class="mr-4">
+                  <component-image [brandName]="brandForm.get('name')?.value || 'New Brand'" [size]="'md'" [imageSrc]="previewImage"></component-image>
+                </div>
+
+                <div>
+                  <h3 class="text-lg font-medium text-gray-900">Brand Image</h3>
+                  <p class="text-sm text-gray-500 mt-1">An image will be automatically generated from the name if none is provided</p>
+                  <div class="mt-2">
+                    <input
+                      type="file"
+                      id="image"
+                      accept=".jpg,.jpeg,.png,.bmp,.gif,.webp"
+                      class="block w-full text-sm text-gray-500
+                        file:mr-4 file:py-2 file:px-4
+                        file:rounded-md file:border-0
+                        file:text-sm file:font-medium
+                        file:bg-blue-50 file:text-blue-700
+                        hover:file:bg-blue-100"
+                      (change)="onImageSelected($event)"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="name" class="form-label">Name <span class="text-red-500">*</span></label>
+              <input
+                type="text"
+                id="name"
+                formControlName="name"
+                class="form-input"
+                [class.border-red-500]="brandForm.get('name')?.invalid && brandForm.get('name')?.touched"
+              />
+
+              <p *ngIf="brandForm.get('name')?.invalid && brandForm.get('name')?.touched" class="mt-1 text-xs text-red-500">Brand name is required</p>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="slug" class="form-label">Slug <span class="text-red-500">*</span></label>
+              <input
+                type="text"
+                id="slug"
+                formControlName="slug"
+                class="form-input"
+                [class.border-red-500]="brandForm.get('slug')?.invalid && brandForm.get('slug')?.touched"
+              />
+
+              <p *ngIf="brandForm.get('slug')?.invalid && brandForm.get('slug')?.touched" class="mt-1 text-xs text-red-500">Slug is required and should only contain lowercase letters, numbers, and hyphens</p>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="country" class="form-label">Country <span class="text-red-500">*</span></label>
+              <select
+                id="country"
+                formControlName="country"
+                [class.border-red-500]="brandForm.get('country')?.invalid && brandForm.get('country')?.touched"
+              >
+                <option value="" disabled>Select a country</option>
+                <option *ngFor="let country of countries" [value]="country.code">{{ country.name }} ({{ country.code }})</option>
+              </select>
+
+              <p *ngIf="brandForm.get('country')?.invalid && brandForm.get('country')?.touched" class="mt-1 text-xs text-red-500">Country is required</p>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="default" class="form-label">Default <span class="text-red-500">*</span></label>
+              <select
+                id="default"
+                formControlName="default"
+                [class.border-red-500]="brandForm.get('default')?.invalid && brandForm.get('default')?.touched"
+              >
+                <option [ngValue]="true">Yes</option>
+                <option [ngValue]="false">No</option>
+              </select>
+
+              <p *ngIf="brandForm.get('default')?.invalid && brandForm.get('default')?.touched" class="mt-1 text-xs text-red-500">Please select an option</p>
+            </div>
+
+            <div class="sm:col-span-6">
+              <label for="caption" class="form-label">Caption</label>
+              <input
+                type="text"
+                id="caption"
+                formControlName="caption"
+                class="form-input"
+                [class.border-red-500]="brandForm.get('caption')?.invalid && brandForm.get('caption')?.touched"
+              />
+            </div>
+
+            <div class="sm:col-span-6">
+              <label for="description" class="form-label">Description</label>
+              <textarea
+                id="description"
+                formControlName="description"
+                rows="3"
+                class="form-input"
+              ></textarea>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="website" class="form-label">Website</label>
+              <input
+                type="url"
+                id="website"
+                formControlName="website"
+                class="form-input"
+                [class.border-red-500]="brandForm.get('website')?.invalid && brandForm.get('website')?.touched"
+                placeholder="https://example.com"
+              />
+
+              <p *ngIf="brandForm.get('website')?.invalid && brandForm.get('website')?.touched" class="mt-1 text-xs text-red-500">Valid website URL is required</p>
+            </div>
+
+            <div class="sm:col-span-3">
+              <label for="rating" class="form-label">Rating (0-5)</label>
+              <input
+                type="number"
+                id="rating"
+                formControlName="rating"
+                min="0"
+                max="5"
+                step="0.1"
+                class="form-input"
+                [class.border-red-500]="brandForm.get('rating')?.invalid && brandForm.get('rating')?.touched"
+              />
+
+              <p *ngIf="brandForm.get('rating')?.invalid && brandForm.get('rating')?.touched" class="mt-1 text-xs text-red-500">Rating must be between 0 and 5</p>
+            </div>
+          </div>
+
+          <div class="mt-8 flex justify-between gap-3">
+            <button
+              type="submit"
+              [disabled]="brandForm.invalid || submitting"
+              [class.opacity-50]="brandForm.invalid || submitting"
+              class="btn btn-primary cursor-pointer">Update Brand</button>
+            <a routerLink="/portal/brands" class="btn btn-secondary">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

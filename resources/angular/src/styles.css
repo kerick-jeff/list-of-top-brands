@@ -1,0 +1,149 @@
+@import url('https://rsms.me/inter/inter.css');
+
+@import "tailwindcss";
+
+@layer base {
+  html {
+    font-family: 'Inter var', system-ui, sans-serif;
+    @apply text-gray-900 antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply m-0 bg-gray-50 min-h-screen;
+  }
+
+  h1 {
+    @apply text-3xl font-bold leading-tight sm:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl font-bold leading-tight sm:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl font-semibold leading-snug sm:text-2xl;
+  }
+
+  h4 {
+    @apply text-lg font-semibold leading-snug;
+  }
+
+  button, .btn {
+    @apply transition-all duration-200;
+  }
+
+  select {
+    @apply block w-full px-3 py-2 pr-8 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
+    background-repeat: no-repeat;
+    background-size: 1.5em 1.5em;
+    padding-right: 2.5rem;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center px-4 py-2 text-sm font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-500;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-gray-700 border border-gray-300 hover:bg-gray-50 focus:ring-blue-500;
+  }
+
+  .btn-danger {
+    @apply bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  .form-input {
+    @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm placeholder-gray-400;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+
+  .form-group {
+    @apply mb-4;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-sm overflow-hidden transition-shadow duration-300 hover:shadow-md;
+  }
+
+  .container-custom {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .rating {
+    @apply flex items-center;
+  }
+
+  .star {
+    @apply w-5 h-5 text-orange-400;
+  }
+}
+
+@layer utilities {
+  .fade-enter {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .fade-enter-active {
+    opacity: 1;
+    transform: translateY(0px);
+    transition: opacity 300ms, transform 300ms;
+  }
+
+  .list-move,
+  .list-enter-active,
+  .list-leave-active {
+    transition: all 0.3s ease;
+  }
+
+  .list-enter-from,
+  .list-leave-to {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(10px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.3s ease-out;
+  }
+}

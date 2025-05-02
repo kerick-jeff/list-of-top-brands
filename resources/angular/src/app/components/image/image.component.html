@@ -1,0 +1,26 @@
+<div class="overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg"
+  [class.border]="hasBorder"
+  [class.shadow-sm]="hasShadow"
+  [ngClass]="{
+    'h-16 w-16': size === 'sm',
+    'h-24 w-24': size === 'md',
+    'h-32 w-32': size === 'lg',
+    'h-full w-full aspect-square': size === 'auto'
+  }">
+
+  <ng-container *ngIf="imageSrc; else initialsTemplate">
+    <img [src]="imageSrc" [alt]="brandName" class="w-full h-full object-cover">
+  </ng-container>
+
+  <ng-template #initialsTemplate>
+    <div *ngIf="initials" class="flex items-center justify-center h-full w-full">
+      <span class="font-medium"
+        [ngClass]="{
+          'text-xl': size === 'sm',
+          'text-2xl': size === 'md',
+          'text-3xl': size === 'lg',
+          'text-4xl': size === 'auto'
+        }">{{ initials }}</span>
+    </div>
+  </ng-template>
+</div>

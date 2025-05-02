@@ -1,0 +1,11 @@
+<div class="flex items-center">
+  <div class="flex">
+    <ng-container *ngFor="let star of stars; let i = index">
+      <span class="text-orange-400" *ngIf="star === 'full'">★</span>
+      <span class="text-orange-400" *ngIf="star === 'half'">★</span>
+      <span class="text-gray-300" *ngIf="star === 'empty'">★</span>
+    </ng-container>
+  </div>
+
+  <span *ngIf="showValue" class="ml-1 text-sm text-gray-600">{{ rating.toFixed(1) }}</span>
+</div>

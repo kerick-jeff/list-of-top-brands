@@ -1,0 +1,20 @@
+<div class="min-h-screen bg-gray-50">
+  <header class="bg-blue-800 text-white">
+    <div class="container-custom mx-auto px-4 py-3">
+      <div class="flex justify-between items-center">
+        <div class="flex items-center gap-1">
+          <a routerLink="/portal/brands" class="text-xl font-bold">Portal</a>
+          <span class="text-xs bg-blue-700 px-2 py-0.5 rounded-full text-blue-100">Manage Brands</span>
+        </div>
+
+        <div class="flex space-x-4 items-center">
+          <a routerLink="/brands" class="px-3 py-2 rounded text-sm font-medium transition hover:bg-blue-700">Website</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="pb-6">
+    <router-outlet></router-outlet>
+  </main>
+</div>
