@@ -1,0 +1,526 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/portal/brands
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Return a paginated list of brands for the portal.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":true,"message":"The brands were successfully.","data":{"current_page":1,"data":[{"id":4,"name":"Brand D","country":null,"caption":"Brand D Caption","description":"Brand D Description","website":"https:\/\/example.com\/brand-d","slug":"brand-d","rating":4.8,"default":true,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":8,"name":"Brand H","country":null,"caption":"Brand H Caption","description":"Brand H Description","website":"https:\/\/example.com\/brand-h","slug":"brand-h","rating":4.7,"default":true,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":10,"name":"Brand J","country":null,"caption":"Brand J Caption","description":"Brand J Description","website":"https:\/\/example.com\/brand-j","slug":"brand-j","rating":4.6,"default":true,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":1,"name":"Brand A","country":"US","caption":"Brand A Caption","description":"Brand A Description","website":"https:\/\/example.com\/brand-a","slug":"brand-a","rating":4.5,"default":false,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":5,"name":"Brand E","country":"GB","caption":"Brand E Caption","description":"Brand E Description","website":"https:\/\/example.com\/brand-e","slug":"brand-e","rating":4.2,"default":false,"image":"CM","created_at":null,"updated_at":null,"image_url":"http:\/\/localhost:8000\/storage\/CM"},{"id":7,"name":"Brand G","country":"AU","caption":"Brand G Caption","description":"Brand G Description","website":"https:\/\/example.com\/brand-g","slug":"brand-g","rating":4.1,"default":false,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":2,"name":"Brand B","country":"CM","caption":"Brand B Caption","description":"Brand B Description","website":"https:\/\/example.com\/brand-b","slug":"brand-b","rating":4,"default":true,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":6,"name":"Brand F","country":null,"caption":"Brand F Caption","description":"Brand F Description","website":"https:\/\/example.com\/brand-f","slug":"brand-f","rating":3.9,"default":true,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":9,"name":"Brand I","country":"FR","caption":"Brand I Caption","description":"Brand I Description","website":"https:\/\/example.com\/brand-i","slug":"brand-i","rating":3.8,"default":false,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":3,"name":"Brand C","country":"CA","caption":"Brand C Caption","description":"Brand C Description","website":"https:\/\/example.com\/brand-c","slug":"brand-c","rating":3.5,"default":false,"image":null,"created_at":null,"updated_at":null,"image_url":null}],"first_page_url":"http:\/\/localhost:8000\/api\/v1\/portal\/brands?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost:8000\/api\/v1\/portal\/brands?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/localhost:8000\/api\/v1\/portal\/brands?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/localhost:8000\/api\/v1\/portal\/brands","per_page":10,"prev_page_url":null,"to":10,"total":10}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          access-control-expose-headers: country
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/portal/brands/{id}/fetch-by-id'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Fetch a single brand by its ID.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the brand.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":true,"message":"The brand was successfully retrieved.","data":{"id":1,"name":"Brand A","country":"US","caption":"Brand A Caption","description":"Brand A Description","website":"https:\/\/example.com\/brand-a","slug":"brand-a","rating":4.5,"default":false,"image":null,"created_at":null,"updated_at":null,"image_url":null}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          access-control-expose-headers: country
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: api/v1/portal/brands/store
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Create a new brand.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      country:
+        name: country
+        description: 'Must not be greater than 2 characters.'
+        required: false
+        example: ng
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      caption:
+        name: caption
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: z
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      description:
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      website:
+        name: website
+        description: 'Must be a valid URL.'
+        required: false
+        example: 'http://www.ernser.org/harum-mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo.html'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      slug:
+        name: slug
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: m
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      rating:
+        name: rating
+        description: 'Must be at least 0. Must not be greater than 5.'
+        required: false
+        example: 3
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      default:
+        name: default
+        description: ''
+        required: false
+        example: true
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'Must match the regex /^data:image\/(jpeg|png|jpg|gif|webp);base64,/.'
+        required: false
+        example: 'data:image/png;base64,'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: b
+      country: ng
+      caption: z
+      description: 'Eius et animi quos velit et.'
+      website: 'http://www.ernser.org/harum-mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo.html'
+      slug: m
+      rating: 3
+      default: true
+      image: 'data:image/png;base64,'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: 'api/v1/portal/brands/{id}/update'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Update an existing brand.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the brand.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: b
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      country:
+        name: country
+        description: 'Must not be greater than 2 characters.'
+        required: false
+        example: ng
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      caption:
+        name: caption
+        description: 'Must not be greater than 255 characters.'
+        required: false
+        example: z
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      description:
+        name: description
+        description: ''
+        required: false
+        example: 'Eius et animi quos velit et.'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      website:
+        name: website
+        description: 'Must be a valid URL.'
+        required: false
+        example: 'http://www.ernser.org/harum-mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo.html'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      slug:
+        name: slug
+        description: 'Must not be greater than 255 characters.'
+        required: true
+        example: m
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      rating:
+        name: rating
+        description: 'Must be at least 0. Must not be greater than 5.'
+        required: false
+        example: 3
+        type: number
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+      default:
+        name: default
+        description: ''
+        required: false
+        example: false
+        type: boolean
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+      image:
+        name: image
+        description: 'Must match the regex /^data:image\/(jpeg|png|jpg|gif|webp);base64,/.'
+        required: false
+        example: 'data:image/png;base64,'
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: true
+        custom: []
+    cleanBodyParameters:
+      name: b
+      country: ng
+      caption: z
+      description: 'Eius et animi quos velit et.'
+      website: 'http://www.ernser.org/harum-mollitia-modi-deserunt-aut-ab-provident-perspiciatis-quo.html'
+      slug: m
+      rating: 3
+      default: false
+      image: 'data:image/png;base64,'
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/v1/portal/brands/{id}/delete'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Delete a brand.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the brand.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: api/v1/portal/brands/delete-many
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/v1/web/brands
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Return a paginated list of brands for the website.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"status":true,"message":"The brands were successfully retrieved.","data":{"current_page":1,"data":[{"id":4,"name":"Brand D","country":null,"caption":"Brand D Caption","description":"Brand D Description","website":"https:\/\/example.com\/brand-d","slug":"brand-d","rating":4.8,"default":true,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":8,"name":"Brand H","country":null,"caption":"Brand H Caption","description":"Brand H Description","website":"https:\/\/example.com\/brand-h","slug":"brand-h","rating":4.7,"default":true,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":10,"name":"Brand J","country":null,"caption":"Brand J Caption","description":"Brand J Description","website":"https:\/\/example.com\/brand-j","slug":"brand-j","rating":4.6,"default":true,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":2,"name":"Brand B","country":"CM","caption":"Brand B Caption","description":"Brand B Description","website":"https:\/\/example.com\/brand-b","slug":"brand-b","rating":4,"default":true,"image":null,"created_at":null,"updated_at":null,"image_url":null},{"id":6,"name":"Brand F","country":null,"caption":"Brand F Caption","description":"Brand F Description","website":"https:\/\/example.com\/brand-f","slug":"brand-f","rating":3.9,"default":true,"image":null,"created_at":null,"updated_at":null,"image_url":null}],"first_page_url":"http:\/\/localhost:8000\/api\/v1\/web\/brands?page=1","from":1,"last_page":1,"last_page_url":"http:\/\/localhost:8000\/api\/v1\/web\/brands?page=1","links":[{"url":null,"label":"&laquo; Previous","active":false},{"url":"http:\/\/localhost:8000\/api\/v1\/web\/brands?page=1","label":"1","active":true},{"url":null,"label":"Next &raquo;","active":false}],"next_page_url":null,"path":"http:\/\/localhost:8000\/api\/v1\/web\/brands","per_page":20,"prev_page_url":null,"to":5,"total":5}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          country: ''
+          access-control-allow-origin: '*'
+          access-control-expose-headers: country
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/v1/web/brands/{id}/fetch-by-slug'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Fetch a single brand by its slug.'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the brand.'
+        required: true
+        example: 1
+        type: integer
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 404
+        content: '{"status":false,"message":"The brand was not found.","error":"No query results for model [App\\Models\\Brand]."}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          access-control-allow-origin: '*'
+          access-control-expose-headers: country
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []

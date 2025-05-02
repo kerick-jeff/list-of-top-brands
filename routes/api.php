@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\BrandController;
 
-Route::get('/user', function (Request $request) {
+/*Route::get('/user', function (Request $request) {
     return $request->user();
-})->middleware('auth:sanctum');
+})->middleware('auth:sanctum');*/
 
 Route::group(['prefix' => 'v1'], function () {
     Route::controller(BrandController::class)->group(function() {
