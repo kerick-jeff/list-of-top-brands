@@ -1,10 +1,11 @@
 # List of Top Brands
 
-![Application Screenshot](/public/screenshots/app-preview.png)
+<img width="1220" alt="image" src="https://github.com/user-attachments/assets/d12bf466-671a-4105-84e8-6719f97ab8c1" />
 
 A beautiful mobile-friendly fullstack application for managing top brands with geolocation support.
 
 ## Table of Contents
+- [Demo](#demo)
 - [Features](#features)
 - [Project Structure](#project-structure)
 - [Tech Stack](#tech-stack)
@@ -14,6 +15,11 @@ A beautiful mobile-friendly fullstack application for managing top brands with g
 - [Docker Setup](#docker-setup)
 - [API Documentation](#api-documentation)
 - [Troubleshooting](#troubleshooting)
+- [Screenshots](#screenshots)
+
+## Demo
+
+A quick lookaround: [WATCH]()
 
 ## Features
 
@@ -174,3 +180,13 @@ Angular Not Updating
 docker compose exec angular npm install
 docker compose restart angular
 ```
+
+## Screenshots
+
+<img width="1220" alt="image" src="https://github.com/user-attachments/assets/01b7c605-5c6b-43cc-b443-2502773b28c5" />
+
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/8e711d78-5b7e-4121-8193-78b10199f03e" />
+
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/ea84f290-f6de-4ff0-9fa4-0960a41e107b" />
+
+<img width="1423" alt="image" src="https://github.com/user-attachments/assets/f38e09e5-b113-4378-a66e-5d4585ab3b9a" />
