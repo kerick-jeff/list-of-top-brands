@@ -1,61 +1,176 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# List of Top Brands
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+![Application Screenshot](/public/screenshots/app-preview.png)
 
-## About Laravel
+A beautiful mobile-friendly fullstack application for managing top brands with geolocation support.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Table of Contents
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Tech Stack](#tech-stack)
+- [Local Development Setup](#local-development-setup)
+  - [Backend (Laravel)](#backend-laravel)
+  - [Frontend (Angular)](#frontend-angular)
+- [Docker Setup](#docker-setup)
+- [API Documentation](#api-documentation)
+- [Troubleshooting](#troubleshooting)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Features
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Core Functionality
+- 🌍 Geolocation-based content (Cloudflare `CF-IPCountry` header)
+- 📱 Responsive UI with Tailwind CSS
+- 🖼️ Image upload handling (Base64 or file)
+- 📊 CRUD operations for brand management
+- 🔄 Real-time data synchronization
 
-## Learning Laravel
+### Developer Experience
+- 📚 Automated API docs with Scribe
+- 🐳 Dockerized development environment
+- 🧪 Pre-configured database seeding
+- 🔍 Request validation with Form Requests
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Project Structure
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+By default, Laravel and Angular frameworks come with a lot of files. These file structures would help navigate the important files that were affected while working on the this project.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<img width="767" alt="Screenshot 2025-05-03 at 02 03 38" src="https://github.com/user-attachments/assets/cb4ffa75-bf2c-450d-ad82-377f6152a073" />
 
-## Laravel Sponsors
+### Backend (Laravel REST API)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+<img width="582" alt="Screenshot 2025-05-03 at 02 03 10" src="https://github.com/user-attachments/assets/9441af00-40ec-45fd-90a8-4e4eed0af5f3" />
 
-### Premium Partners
+### Frontend (Angular Web Application)
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development/)**
-- **[Active Logic](https://activelogic.com)**
+<img width="582" alt="Screenshot 2025-05-03 at 02 02 36" src="https://github.com/user-attachments/assets/eaea0acc-5df1-4b4a-a433-c4f901dcbb2f" />
 
-## Contributing
+## Tech Stack
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+| Component       | Technology                          |
+|-----------------|-------------------------------------|
+| **Backend**     | Laravel 12, PHP 8.2+, MySQL 8.0+    |
+| **Frontend**    | Angular 16+, Tailwind CSS 4+        |
+| **API Docs**    | Scribe (OpenAPI 3.0)                |
+| **Container**   | Docker with multi-stage builds      |
+| **Deployment**  | Nginx (production)                  |
 
-## Code of Conduct
+## Local Development Setup
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### Prerequisites
+- PHP 8.2+
+- Composer 2.x
+- MySQL 8.0+
+- Node.js 18+
+- Angular CLI 19+
 
-## Security Vulnerabilities
+### Backend (Laravel)
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+# Clone repository
+git clone https://github.com/kerick-jeff/list-of-top-brands.git
+cd list-of-top-brands
 
-## License
+# Install dependencies
+composer install
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Configure environment
+cp .env.example .env
+# Edit .env with your database credentials. Also, ensure storage is using the public disk
+
+# Setup database
+php artisan migrate
+php artisan db:seed  # Optional: Populate with sample data
+
+# Link storage
+php artisan storage:link
+
+# Start development server
+php artisan serve
+```
+
+Access API at: http://localhost:8000/api/v1
+
+### Frontend (Angular)
+
+```
+cd resources/angular
+
+# Install dependencies
+npm install
+
+# Start development server
+npm start
+```
+
+Access app at: http://localhost:4200
+
+## Docker Setup
+
+This is an alternative to the Backend and Frontend setup discussed above.
+
+```
+# Build and start containers
+docker compose up -d --build
+
+# Run migrations
+docker compose exec laravel php artisan migrate
+
+# Seed database (optional)
+docker compose exec laravel php artisan db:seed
+
+# Link storage
+docker compose exec laravel php artisan storage:link
+```
+
+### Access services
+
+| Service      | URL                         |
+|--------------|-----------------------------|
+| Laravel API  | http://localhost:8000       |
+| Angular App  | http://localhost:4200       |
+| API Docs     | http://localhost:8000/docs  |
+
+### Key Docker Commands
+
+```
+# Rebuild containers
+docker compose up -d --force-recreate --build
+
+# View logs
+docker compose logs -f angular
+
+# Run artisan commands
+docker compose exec laravel php artisan [command]
+```
+
+## API Documentation
+
+Access interactive docs at: http://localhost:8000/docs
+
+There is also a public Postman collection: See [HERE](https://documenter.getpostman.com/view/3497755/2sB2j4gXF9).
+
+## Troubleshooting
+
+### Common Issues
+
+Image Uploads Not Working
+- Verify storage/app/public is linked to public/storage
+- Check FILESYSTEM_DISK=public in .env
+
+CORS Errors
+- Ensure proper CORS headers in config/cors.php
+- Verify Angular's api.config.ts has correct base URL
+
+Docker MySQL Issues (M1 Mac)
+```
+# In docker-compose.yml
+db:
+  platform: linux/amd64
+```
+
+Angular Not Updating
+
+```
+docker compose exec angular npm install
+docker compose restart angular
+```
