@@ -19,7 +19,7 @@ A beautiful mobile-friendly fullstack application for managing top brands with g
 
 ## Demo
 
-A quick lookaround: [WATCH]()
+A quick lookaround: [WATCH](https://www.loom.com/share/90bdac2125554fa1a09d3e1121dc3fab?sid=b5ca5b7e-2bba-4a86-8ccb-c530f1e492f7)
 
 ## Features
 
